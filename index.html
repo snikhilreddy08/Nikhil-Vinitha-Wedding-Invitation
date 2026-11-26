@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Nikhil &amp; Vinitha wedding invitation</title>
 <meta name="description" content="Wedding invitation of Nikhil and Vinitha, 4 and 6 December 2026, Adoni">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nikhil &amp; Vinitha Wedding Invitation">
+<meta property="og:description" content="You are warmly invited. Tap to open the doors. 4 and 6 December 2026, Adoni.">
+<meta property="og:url" content="https://snikhilreddy08.github.io/Nikhil-Vinitha-Wedding-Invitation/">
+<meta property="og:image" content="https://snikhilreddy08.github.io/Nikhil-Vinitha-Wedding-Invitation/door-preview.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Spectral:ital,wght@0,400;0,600;1,400&family=Noto+Serif+Telugu:wght@600;800&display=swap" rel="stylesheet">
 <style>
@@ -114,7 +123,7 @@ body{margin:0;background:var(--bg);color:var(--ivory)}
 </div>
 
 <div style="text-align:center;padding:20px 0 4px">
-<div style="font-style:italic;color:#E0B25A;font-size:19px">Chi. S.</div>
+<div style="font-style:italic;color:#E0B25A;font-size:19px">Chi.</div>
 <div style="font-family:'Cinzel',serif;font-size:32px;line-height:1.15">Nikhil Reddy</div>
 <div style="font-family:'Noto Serif Telugu',serif;font-size:22px;color:#E0B25A;line-height:1.7">&amp;</div>
 <div style="font-style:italic;color:#E0B25A;font-size:19px">Chi. La. Sou.</div>
@@ -136,6 +145,16 @@ body{margin:0;background:var(--bg);color:var(--ivory)}
 <div style="font-size:21px;font-weight:600;margin-top:4px;line-height:1.35">Sunday, 6th December 2026</div>
 <div>6:45 a.m. to 7:35 a.m.</div>
 <div>Lagnam: Vruschika</div>
+</div>
+
+<div style="padding:32px 0 30px;text-align:center;border-bottom:1.5px solid #E0B25A">
+<div style="font-family:'Cinzel',serif;font-size:18px;color:#E0B25A">Countdown to the Wedding</div>
+<div id="cd" role="group" aria-label="Countdown to the Sumuhurtham on 6 December 2026" style="display:flex;justify-content:center;gap:10px;margin-top:14px">
+<div style="min-width:58px;padding:10px 0;border:1.5px solid #E0B25A;border-radius:12px;background:#13244F"><div id="cd-d" style="font-family:'Cinzel',serif;font-size:26px;line-height:1.1">--</div><div style="font-size:13px;color:#E0B25A">Days</div></div>
+<div style="min-width:58px;padding:10px 0;border:1.5px solid #E0B25A;border-radius:12px;background:#13244F"><div id="cd-h" style="font-family:'Cinzel',serif;font-size:26px;line-height:1.1">--</div><div style="font-size:13px;color:#E0B25A">Hours</div></div>
+<div style="min-width:58px;padding:10px 0;border:1.5px solid #E0B25A;border-radius:12px;background:#13244F"><div id="cd-m" style="font-family:'Cinzel',serif;font-size:26px;line-height:1.1">--</div><div style="font-size:13px;color:#E0B25A">Mins</div></div>
+<div style="min-width:58px;padding:10px 0;border:1.5px solid #E0B25A;border-radius:12px;background:#13244F"><div id="cd-s" style="font-family:'Cinzel',serif;font-size:26px;line-height:1.1">--</div><div style="font-size:13px;color:#E0B25A">Secs</div></div>
+</div>
 </div>
 
 <div style="padding:36px 0 8px;text-align:center">
@@ -173,6 +192,23 @@ body{margin:0;background:var(--bg);color:var(--ivory)}
   var invite = document.getElementById('invite');
   var again = document.getElementById('again');
   var timer;
+  var target = new Date('2026-12-06T06:45:00+05:30').getTime();
+  var cdD = document.getElementById('cd-d'), cdH = document.getElementById('cd-h'), cdM = document.getElementById('cd-m'), cdS = document.getElementById('cd-s');
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+  function tick() {
+    var diff = target - Date.now();
+    if (diff <= 0) {
+      cdD.textContent = cdH.textContent = cdM.textContent = cdS.textContent = '00';
+      return;
+    }
+    var s = Math.floor(diff / 1000);
+    cdD.textContent = Math.floor(s / 86400);
+    cdH.textContent = pad(Math.floor((s % 86400) / 3600));
+    cdM.textContent = pad(Math.floor((s % 3600) / 60));
+    cdS.textContent = pad(s % 60);
+  }
+  tick();
+  setInterval(tick, 1000);
   lamp.addEventListener('click', function () {
     if (app.classList.contains('lit')) return;
     app.classList.add('lit');
